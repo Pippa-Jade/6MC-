@@ -5,10 +5,10 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-red-50">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-red-900">
-        <a className="flex items-center justify-center" href="#">
+        <Link className="flex items-center justify-center" href="#">
           <ShieldCheck className="h-6 w-6 text-red-50" />
           <span className="ml-2 text-2xl font-bold text-red-50">AuthentiScan</span>
-        </a>
+        </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <a className="text-sm font-medium hover:underline text-red-50" href="#features">
             Features
