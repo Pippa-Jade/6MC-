@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ShieldCheck, Smartphone, Zap, Search } from 'lucide-react';
 
 export default function LandingPage() {
@@ -15,6 +16,9 @@ export default function LandingPage() {
           <a className="text-sm font-medium hover:underline text-red-50" href="#how-it-works">
             How It Works
           </a>
+          <Link href="/scan-page" legacyBehavior>
+            <a className="text-sm font-medium hover:underline text-red-50">Scan</a>
+          </Link>
         </nav>
       </header>
       <main className="flex-1">
@@ -32,6 +36,13 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+        <div className="flex justify-center py-8">
+          <Link href="/scan-page" legacyBehavior>
+            <a className="bg-red-700 text-red-50 hover:bg-red-800 px-4 py-2 rounded-md">
+              Scan
+            </a>
+          </Link>
+        </div>
         <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-red-50">
           <div className="container px-4 md:px-6 mx-auto">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 text-red-900">
