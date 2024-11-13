@@ -16,7 +16,7 @@ export default function LandingPage() {
           <a className="text-sm font-medium hover:underline text-red-50" href="#how-it-works">
             How It Works
           </a>
-          <Link href="/scan-page" legacyBehavior>
+          <Link href="/scan-page">
             <a className="text-sm font-medium hover:underline text-red-50">Scan</a>
           </Link>
         </nav>
@@ -37,7 +37,7 @@ export default function LandingPage() {
           </div>
         </section>
         <div className="flex justify-center py-8">
-          <Link href="/scan-page" legacyBehavior>
+          <Link href="/scan-page">
             <a className="bg-red-700 text-red-50 hover:bg-red-800 px-4 py-2 rounded-md">
               Scan
             </a>
