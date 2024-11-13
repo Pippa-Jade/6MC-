@@ -21,10 +21,10 @@ export default function ScanPage() {
   return (
     <div className="flex flex-col min-h-screen bg-red-50">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-red-900">
-        <a className="flex items-center justify-center" href="/">
+        <Link className="flex items-center justify-center" href="/">
           <ShieldCheck className="h-6 w-6 text-red-50" />
           <span className="ml-2 text-2xl font-bold text-red-50">AuthentiScan</span>
-        </a>
+        </Link>
       </header>
       <main className="flex-1 container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-red-900 mb-8 text-center">Product Authentication</h1>

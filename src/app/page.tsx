@@ -76,12 +76,12 @@ export default function LandingPage() {
               <div className="flex flex-col items-center space-y-2">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-red-50 text-xl font-bold">1</div>
                 <h3 className="text-xl font-bold text-red-900">Download the App</h3>
-                <p className="text-red-700 text-center">Get our app from your device's app store.</p>
+                <p className="text-red-700 text-center">Get our app from your device&apos;s app store.</p>
               </div>
               <div className="flex flex-col items-center space-y-2">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-red-50 text-xl font-bold">2</div>
                 <h3 className="text-xl font-bold text-red-900">Scan the Product</h3>
-                <p className="text-red-700 text-center">Use your camera to scan the product's unique identifier.</p>
+                <p className="text-red-700 text-center">Use your camera to scan the product&apos;s unique identifier.</p>
               </div>
               <div className="flex flex-col items-center space-y-2">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-red-50 text-xl font-bold">3</div>
