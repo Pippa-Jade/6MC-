@@ -5,19 +5,19 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-red-50">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-red-900">
-        <Link className="flex items-center justify-center" href="#">
+        <Link className="flex items-center justify-center" href="/">
           <ShieldCheck className="h-6 w-6 text-red-50" />
           <span className="ml-2 text-2xl font-bold text-red-50">AuthentiScan</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <a className="text-sm font-medium hover:underline text-red-50" href="#features">
+          <Link className="text-sm font-medium hover:underline text-red-50" href="#features">
             Features
-          </a>
-          <a className="text-sm font-medium hover:underline text-red-50" href="#how-it-works">
+          </Link>
+          <Link className="text-sm font-medium hover:underline text-red-50" href="#how-it-works">
             How It Works
-          </a>
-          <Link href="/scan-page" legacyBehavior>
-            <a className="text-sm font-medium hover:underline text-red-50">Scan</a>
+          </Link>
+          <Link className="text-sm font-medium hover:underline text-red-50" href="/scan-page">
+            Scan
           </Link>
         </nav>
       </header>
@@ -37,10 +37,8 @@ export default function LandingPage() {
           </div>
         </section>
         <div className="flex justify-center py-8">
-          <Link href="/scan-page" legacyBehavior>
-            <a className="bg-red-700 text-red-50 hover:bg-red-800 px-4 py-2 rounded-md">
-              Scan
-            </a>
+          <Link href="/scan-page" className="bg-red-700 text-red-50 hover:bg-red-800 px-4 py-2 rounded-md">
+            Scan
           </Link>
         </div>
         <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-red-50">
@@ -95,12 +93,12 @@ export default function LandingPage() {
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-red-900 text-red-50">
         <p className="text-xs text-red-300">© 2024 AuthentiScan. All rights reserved.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <a className="text-xs hover:underline underline-offset-4" href="#">
+          <Link className="text-xs hover:underline underline-offset-4" href="/terms">
             Terms of Service
-          </a>
-          <a className="text-xs hover:underline underline-offset-4" href="#">
+          </Link>
+          <Link className="text-xs hover:underline underline-offset-4" href="/privacy">
             Privacy
-          </a>
+          </Link>
         </nav>
       </footer>
     </div>
