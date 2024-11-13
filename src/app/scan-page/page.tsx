@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { ShieldCheck, Camera, Wifi, CheckCircle2, XCircle } from 'lucide-react'
 
 export default function ScanPage() {
   const [scanState, setScanState] = useState<'idle' | 'scanning' | 'complete'>('idle')
   const [isAuthentic, setIsAuthentic] = useState<boolean | null>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   const startScan = () => {
     setScanState('scanning')
@@ -17,6 +18,18 @@ export default function ScanPage() {
       setIsAuthentic(Math.random() > 0.5)
     }, 3000)
   }
+
+  useEffect(() => {
+    if (scanState === 'idle' && videoRef.current) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          videoRef.current!.srcObject = stream
+        })
+        .catch(err => {
+          console.error("Error accessing camera: ", err)
+        })
+    }
+  }, [scanState])
 
   return (
     <div className="flex flex-col min-h-screen bg-red-50">
@@ -35,9 +48,12 @@ export default function ScanPage() {
           </div>
           <div className="px-6 py-4">
             {scanState === 'idle' && (
-              <button onClick={startScan} className="w-full bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-md">
-                Start Scan
-              </button>
+              <div className="flex flex-col items-center space-y-4">
+                <video ref={videoRef} autoPlay className="w-full h-64 bg-black rounded-md"></video>
+                <button onClick={startScan} className="w-full bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-md">
+                  Start Scan
+                </button>
+              </div>
             )}
             {scanState === 'scanning' && (
               <div className="space-y-4">
@@ -53,18 +69,18 @@ export default function ScanPage() {
             {scanState === 'complete' && (
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="flex flex-col items-center p-4 bg-red-100 rounded-lg">
-                    <Camera className="h-8 w-8 text-red-600 mb-2" />
-                    <span className="text-sm font-medium text-red-700">Digital Watermark</span>
+                  <div className={`flex flex-col items-center p-4 rounded-lg ${isAuthentic ? 'bg-green-100' : 'bg-red-100'}`}>
+                    <Camera className={`h-8 w-8 mb-2 ${isAuthentic ? 'text-green-600' : 'text-red-600'}`} />
+                    <span className={`text-sm font-medium ${isAuthentic ? 'text-green-700' : 'text-red-700'}`}>Digital Watermark</span>
                     {isAuthentic ? (
                       <CheckCircle2 className="h-6 w-6 text-green-500 mt-2" />
                     ) : (
                       <XCircle className="h-6 w-6 text-red-500 mt-2" />
                     )}
                   </div>
-                  <div className="flex flex-col items-center p-4 bg-red-100 rounded-lg">
-                    <Wifi className="h-8 w-8 text-red-600 mb-2" />
-                    <span className="text-sm font-medium text-red-700">RFID Check</span>
+                  <div className={`flex flex-col items-center p-4 rounded-lg ${isAuthentic ? 'bg-green-100' : 'bg-red-100'}`}>
+                    <Wifi className={`h-8 w-8 mb-2 ${isAuthentic ? 'text-green-600' : 'text-red-600'}`} />
+                    <span className={`text-sm font-medium ${isAuthentic ? 'text-green-700' : 'text-red-700'}`}>RFID Check</span>
                     {isAuthentic ? (
                       <CheckCircle2 className="h-6 w-6 text-green-500 mt-2" />
                     ) : (
