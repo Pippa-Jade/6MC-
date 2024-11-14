@@ -52,8 +52,8 @@ export default function ScanPage() {
           <span className="ml-2 text-2xl font-bold text-red-50">AuthentiScan</span>
         </a>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:underline text-red-50" href="/scan-page">
-            Scan
+          <Link className="text-sm font-medium hover:underline text-red-50" href="/">
+            Home
           </Link>
           <Link className="text-sm font-medium hover:underline text-red-50" href="/scan-history">
             History
@@ -127,9 +127,7 @@ export default function ScanPage() {
           </div>
         </div>
       </main>
-      <footer className="py-6 w-full shrink-0 px-4 md:px-6 border-t bg-red-900 text-red-50">
-        <p className="text-xs text-center text-red-300">© 2024 AuthentiScan. All rights reserved.</p>
-      </footer>
+      
     </div>
   )
 }
