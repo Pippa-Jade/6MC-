@@ -13,10 +13,23 @@ export default function ScanPage() {
     setScanState('scanning')
     // Simulate scanning process
     setTimeout(() => {
+      const result = Math.random() > 0.5
       setScanState('complete')
-      // Randomly determine authenticity for demonstration
-      setIsAuthentic(Math.random() > 0.5)
+      setIsAuthentic(result)
+      saveScanResult(result)
     }, 3000)
+  }
+
+  const saveScanResult = (isAuthentic: boolean) => {
+    const scannedProducts = JSON.parse(localStorage.getItem('scannedProducts') || '[]')
+    const newProduct = {
+      id: scannedProducts.length + 1,
+      name: `Lilly Product ${String.fromCharCode(65 + scannedProducts.length)}`,
+      scannedAt: new Date().toLocaleString(),
+      isAuthentic
+    }
+    scannedProducts.push(newProduct)
+    localStorage.setItem('scannedProducts', JSON.stringify(scannedProducts))
   }
 
   useEffect(() => {
@@ -38,6 +51,14 @@ export default function ScanPage() {
           <ShieldCheck className="h-6 w-6 text-red-50" />
           <span className="ml-2 text-2xl font-bold text-red-50">AuthentiScan</span>
         </a>
+        <nav className="ml-auto flex gap-4 sm:gap-6">
+          <Link className="text-sm font-medium hover:underline text-red-50" href="/scan-page">
+            Scan
+          </Link>
+          <Link className="text-sm font-medium hover:underline text-red-50" href="/scan-history">
+            History
+          </Link>
+        </nav>
       </header>
       <main className="flex-1 container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-red-900 mb-8 text-center">Product Authentication</h1>
