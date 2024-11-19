@@ -21,17 +21,16 @@ export default function Component() {
 
   return (
     <div className="flex flex-col min-h-screen bg-red-50">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-red-900">
-        <Link className="flex items-center justify-center" href="/">
-          <ShieldCheck className="h-6 w-6 text-red-50" />
-          <span className="ml-2 text-2xl font-bold text-red-50">LillyAuthentiScan</span>
-        </Link>
+     <header className="px-4 lg:px-6 h-24 flex items-center" style = {{backgroundColor : '#f8f9fa'}}>
+        <a className="flex items-center justify-center" href="/">
+          <img src="/Authenti-scan.png" alt="AuthentiScan Logo" className="h-32 w-32" />
+        </a>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:underline text-red-50" href="/">
+        <Link className="bg-red-700 text-red-50 hover:bg-red-800 px-6 py-3 rounded-md text-lg font-semibold shadow-lg" href="/">
             Home
           </Link>
-          <Link className="text-sm font-medium hover:underline text-red-50" href="/scan-page">
-            Scan 
+          <Link className="bg-red-700 text-red-50 hover:bg-red-800 px-6 py-3 rounded-md text-lg font-semibold shadow-lg" href="/scan-page">
+            Scan
           </Link>
         </nav>
       </header>

@@ -1,22 +1,20 @@
-import Link from 'next/link';
-import { ShieldCheck, Smartphone, Zap, Search } from 'lucide-react';
+'use client'
+
+import Link from 'next/link'
+import { Smartphone, Zap, Search } from 'lucide-react'
+//import AuthentiScanLogo from '/Users/L079029/Projects/6MC/6MC-/Authenti-scan.png' // Adjust the path as needed
 
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-red-50">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-red-900">
-        <Link className="flex items-center justify-center" href="/">
-          <ShieldCheck className="h-6 w-6 text-red-50" />
-          <span className="ml-2 text-2xl font-bold text-red-50">LillyAuthentiScan</span>
-        </Link>
+      <header className="px-4 lg:px-6 h-24 flex items-center" style={{ backgroundColor: '#f8f9fa' }}>
+        <a className="flex items-center justify-center" href="/">
+          <img src="/Authenti-scan.png" alt="AuthentiScan Logo" className="h-32 w-32" />
+        </a>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:underline text-red-50" href="/scan-page">
-            Scan
-          </Link>
-          <Link className="text-sm font-medium hover:underline text-red-50" href="/scan-history">
+          <Link className="bg-red-700 text-red-50 hover:bg-red-800 px-6 py-3 rounded-md text-lg font-semibold shadow-lg" href="/scan-history">
             History
           </Link>
-          
         </nav>
       </header>
       <main className="flex-1">
@@ -34,9 +32,6 @@ export default function LandingPage() {
               <div className="flex justify-center py-8 space-x-4">
                 <Link href="/scan-page" className="bg-red-700 text-red-50 hover:bg-red-800 px-6 py-3 rounded-md text-lg font-semibold shadow-lg">
                   Scan
-                </Link>
-                <Link href="/scan-history" className="bg-red-700 text-red-50 hover:bg-red-800 px-6 py-3 rounded-md text-lg font-semibold shadow-lg">
-                  Scan History
                 </Link>
               </div>
             </div>
@@ -101,17 +96,7 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-red-900 text-red-50">
-        <p className="text-xs text-red-300">© 2024 LillyAuthentiScan. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4" href="/terms">
-            Terms of Service
-          </Link>
-          <Link className="text-xs hover:underline underline-offset-4" href="/privacy">
-            Privacy
-          </Link>
-        </nav>
-      </footer>
+     
     </div>
-  );
+  )
 }
