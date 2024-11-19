@@ -69,7 +69,7 @@ export default function ScanPage() {
     if (videoRef.current) {
       const constraints = {
         video: {
-          facingMode: 'environment', // Use the rear camera if available
+          facingMode: { ideal: 'environment' }, // Use the rear camera if available
           width: { ideal: 1280 },
           height: { ideal: 720 }
         }
