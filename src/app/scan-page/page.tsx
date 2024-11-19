@@ -66,7 +66,8 @@ export default function ScanPage() {
   }
 
   useEffect(() => {
-    if (videoRef.current) {
+    const isSmartphoneOrLaptop = /Android|iPhone|iPad|iPod|Macintosh|Windows/i.test(navigator.userAgent)
+    if (isSmartphoneOrLaptop && videoRef.current) {
       const constraints = {
         video: {
           facingMode: { ideal: 'environment' }, // Use the rear camera if available
@@ -83,6 +84,8 @@ export default function ScanPage() {
           console.error("Error accessing camera: ", err)
           alert("Error accessing camera. Please ensure you have granted camera permissions.")
         })
+    } else {
+      alert("This feature is only available on smartphones or laptops.")
     }
   }, [])
 
