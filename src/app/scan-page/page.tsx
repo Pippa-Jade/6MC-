@@ -7,6 +7,7 @@ import { Camera, Wifi, CheckCircle2, XCircle } from 'lucide-react'
 export default function ScanPage() {
   const [scanState, setScanState] = useState<'idle' | 'scanning' | 'complete'>('idle')
   const [isAuthentic, setIsAuthentic] = useState<boolean | null>(null)
+  const [selectedProduct, setSelectedProduct] = useState<string>('Mounjaro')
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -41,23 +42,19 @@ export default function ScanPage() {
 
         console.log(`Red count: ${redCount}`)
 
-        if (redCount > 0) {
-          setIsAuthentic(true)
-        } else {
-          setIsAuthentic(false)
-        }
-
+        const isProductAuthentic = redCount > 0
+        setIsAuthentic(isProductAuthentic)
         setScanState('complete')
-        saveScanResult(isAuthentic)
+        saveScanResult(isProductAuthentic)
       }
     }
   }
 
-  const saveScanResult = (isAuthentic: boolean | null) => {
+  const saveScanResult = (isAuthentic: boolean) => {
     const scannedProducts = JSON.parse(localStorage.getItem('scannedProducts') || '[]')
     const newProduct = {
       id: scannedProducts.length + 1,
-      name: `Lilly Product ${String.fromCharCode(65 + scannedProducts.length)}`,
+      name: selectedProduct,
       scannedAt: new Date().toLocaleString(),
       isAuthentic
     }
@@ -113,6 +110,14 @@ export default function ScanPage() {
           </div>
           <div className="px-6 py-4">
             <div className="flex flex-col items-center space-y-4">
+              <select
+                value={selectedProduct}
+                onChange={(e) => setSelectedProduct(e.target.value)}
+                className="w-full bg-white border border-gray-300 rounded-md px-4 py-2"
+              >
+                <option value="Mounjaro">Mounjaro</option>
+                <option value="Zepbound">Zepbound</option>
+              </select>
               <video ref={videoRef} autoPlay className="w-full h-64 bg-black rounded-md"></video>
               <canvas ref={canvasRef} className="hidden" width="1280" height="720"></canvas>
               {scanState === 'idle' && (
